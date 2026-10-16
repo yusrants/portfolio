@@ -1,536 +1,466 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Yusra Masood</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="description" content="Yusra Masood — software engineer, creative thinker, and curious maker.">
+  <title>Yusra Masood — Code, curiosity & a little color</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4f0e8; --ink: #22251f; --muted: #6b6c63;
+      --green: #285c45; --lime: #d7ed86; --pink: #efb9ae;
+      --line: rgba(34,37,31,.17); --white: #fffdf8; --radius: 22px;
+      --serif: "Playfair Display", Georgia, serif; --sans: "DM Sans", sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+    * { box-sizing: border-box; 
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%91%A9%E2%80%8D%F0%9F%92%BB%3C/text%3E%3C/svg%3E") 4 4, auto;
+}
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin: auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(244,240,232,.9); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 700; letter-spacing: -.05em; font-size: 1.1rem; }
+    .brand span { color: var(--green); }
+    .navlinks { display: flex; gap: 23px; align-items: center; font-size: .88rem; }
+    .navlinks a { color: var(--muted); transition: color .2s; }
+    .navlinks a:hover { color: var(--green); }
+    .navlinks .contact-link { background: var(--ink); color: white; padding: 10px 15px; border-radius: 99px; }
+    .eyebrow { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .13em; color: var(--green); }
+    .hero { padding: 72px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: clamp(32px, 6vw, 90px); }
+    h1,h2,h3,p { margin-top: 0; }
+    h1 { font: 500 clamp(3.4rem, 7.8vw, 7.6rem)/.98 var(--serif); letter-spacing: -.065em; margin: 22px 0 26px; max-width: 760px; }
+    h1 em { color: var(--green); font-weight: 500; }
+    .intro { max-width: 550px; font-size: 1.08rem; color: #55574f; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 18px; border-radius: 99px; border: 1px solid var(--ink); font-weight: 600; font-size: .9rem; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn.dark { background: var(--ink); color: white; }
+    .btn.light { background: transparent; }
+    .photo-stack { position: relative; max-width: 440px; width: 100%; margin: 0 auto; }
+    .portrait { aspect-ratio: 4/5; border-radius: 46% 46% 20px 20px; overflow: hidden; background: var(--pink); border: 1px solid var(--ink); position: relative; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+	.landscape { aspect-ratio: 1; overflow: hidden; background: var(--pink); border: 1px solid var(--ink); position: relative; }
+    .landscape img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; color: var(--ink); }
+    .photo-placeholder .sun { font-size: 5rem; line-height: 1; }
+    .photo-placeholder strong { font: 500 1.6rem var(--serif); margin-top: 15px; }
+    .photo-placeholder small { font: .72rem var(--mono); margin-top: 9px; }
+    .sticker { position: absolute; right: -23px; bottom: 35px; background: var(--lime); border: 1px solid var(--ink); border-radius: 50%; width: 112px; height: 112px; display: grid; place-items: center; text-align: center; font: .75rem/1.3 var(--mono); transform: rotate(10deg); }
+    .tiny-note { position: absolute; left: -38px; top: 48px; writing-mode: vertical-rl; font: .7rem var(--mono); color: var(--muted); }
+    .ticker { overflow: hidden; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); background: var(--lime); }
+    .ticker-inner { display: flex; justify-content: space-around; gap: 26px; white-space: nowrap; padding: 13px 0; font: .75rem var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .ticker b { font-size: 1rem; }
+    section { padding: 100px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 38px; }
+    .section-head h2 { font: 500 clamp(2.5rem, 5vw, 4.5rem)/1.02 var(--serif); letter-spacing: -.05em; margin: 12px 0 0; }
+    .section-head p { color: var(--muted); max-width: 360px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-visual { background: var(--green); color: white; border-radius: var(--radius); padding: 30px; min-height: 320px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative; }
+    .about-visual:after { content: "✳"; font-size: 12rem; line-height: .8; position: absolute; right: -12px; bottom: 18px; color: var(--lime); opacity: .95; transform: rotate(-12deg); }
+    .about-visual p { font: italic 2rem/1.15 var(--serif); max-width: 230px; position: relative; z-index: 1; }
+    .about-visual span { font: .7rem var(--mono); text-transform: uppercase; letter-spacing: .1em; position: relative; z-index: 1; }
+    .about-copy { font-size: 1.08rem; color: #55574f; }
+    .about-copy strong { color: var(--ink); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
+    .location-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+    .location-card .label { font: .68rem var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .location-card h3 { font: 500 1.5rem var(--serif); margin: 9px 0 5px; }
+    .location-card p { color: var(--muted); font-size: .84rem; margin: 0; }
+    .edit { display: inline-block; margin-top: 10px; color: var(--green); font: .65rem var(--mono); }
+    .skills-section { background: var(--green); color: white; }
+    .skills-section .eyebrow { color: var(--lime); }
+    .skills-section .section-head p { color: rgba(255,255,255,.72); }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .skill-card { border: 1px solid rgba(255,255,255,.28); border-radius: 18px; padding: 25px; min-height: 210px; transition: background .2s, transform .2s; }
+    .skill-card:hover { background: rgba(255,255,255,.08); transform: translateY(-4px); }
+    .skill-num { font: .72rem var(--mono); color: var(--lime); }
+    .skill-card h3 { font: 500 1.65rem var(--serif); margin: 26px 0 10px; }
+    .skill-card p { color: rgba(255,255,255,.72); font-size: .9rem; margin: 0; }
+    .projects { background: #e9e3d8; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+    .project-card { background: var(--white); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 35px rgba(34,37,31,.09); }
+    .project-art { min-height: 200px; padding: 25px; position: relative; display: flex; align-items: end; overflow: hidden; }
+    .project-art:before { content: ""; width: 180px; height: 180px; border: 1px solid rgba(34,37,31,.25); border-radius: 50%; position: absolute; top: -60px; right: -10px; }
+    .project-art:after { content: ""; width: 110px; height: 110px; border: 1px solid rgba(34,37,31,.25); border-radius: 50%; position: absolute; top: -25px; right: 25px; }
+    .art-one { background: #d9e4bb; } .art-two { background: #efc1b6; }
+    .art-three { background: #c6d7e8; } .art-four { background: #e8d4a3; }
+    .art-five { background: #d8c9e7; } .art-six { background: #c8ded5; }
+    .project-index { font: .72rem var(--mono); position: relative; z-index: 1; background: rgba(255,253,248,.72); padding: 7px 10px; border-radius: 99px; }
+    .project-symbol { position: absolute; right: 32px; bottom: 18px; font: 5rem/1 var(--serif); z-index: 1; transform: rotate(-8deg); }
+    .project-body { padding: 25px; }
+    .project-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+    .project-body h3 { font: 500 1.65rem/1.1 var(--serif); margin: 0 0 12px; }
+    .project-body p { color: var(--muted); font-size: .91rem; }
+    .arrow { flex: 0 0 auto; width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 1.2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag { font: .65rem var(--mono); border: 1px solid var(--line); padding: 6px 9px; border-radius: 99px; color: #55574f; }
+    .timeline { border-top: 1px solid var(--line); }
+    .job { display: grid; grid-template-columns: 190px 1fr; gap: 35px; padding: 27px 0; border-bottom: 1px solid var(--line); }
+    .job-date { font: .72rem var(--mono); color: var(--muted); padding-top: 5px; }
+    .job h3 { font: 500 1.65rem var(--serif); margin: 0 0 4px; }
+    .job-company { color: var(--green); font-weight: 700; font-size: .9rem; margin-bottom: 9px; }
+    .job p { color: var(--muted); margin: 0; max-width: 690px; }
+    .life-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .life-card { border-radius: 18px; padding: 23px; min-height: 175px; display: flex; flex-direction: column; justify-content: space-between; }
+    .life-card:nth-child(1) { background: var(--pink); } .life-card:nth-child(2) { background: var(--lime); } .life-card:nth-child(3) { background: #c6d7e8; }
+    .life-card .emoji { font-size: 1.8rem; } .life-card h3 { font: 500 1.45rem var(--serif); margin: 20px 0 0; }
+    .education { background: #e9e3d8; }
+    .edu-card { border: 1px solid var(--line); background: var(--white); border-radius: 18px; padding: 25px; display: flex; justify-content: space-between; gap: 24px; }
+    .edu-card h3 { font: 500 1.55rem var(--serif); margin: 0 0 8px; }
+    .edu-card p { margin: 0; color: var(--muted); }
+    .edu-year { font: .72rem var(--mono); white-space: nowrap; }
+    .contact { padding: 90px 0; background: var(--lime); }
+    .contact-grid { display: flex; justify-content: space-between; align-items: end; gap: 35px; }
+    .contact h2 { font: 500 clamp(3rem, 7vw, 6.5rem)/.95 var(--serif); letter-spacing: -.06em; margin: 14px 0 20px; max-width: 700px; }
+    .contact p { max-width: 480px; color: #55574f; }
+    .contact-links { display: flex; flex-direction: column; gap: 12px; align-items: start; }
+    .contact-links a { font-weight: 700; border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+    footer { padding: 22px 0; background: var(--ink); color: rgba(255,255,255,.7); font: .7rem var(--mono); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 30px, 600px); }
+      .nav { min-height: 64px; flex-wrap: wrap; padding: 12px 0; }
+      .navlinks { gap: 14px; overflow-x: auto; width: 100%; padding-bottom: 3px; font-size: .8rem; }
+      .navlinks .contact-link { padding: 7px 12px; }
+      .hero { padding: 48px 0; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .photo-stack { max-width: 330px; }
+      .tiny-note { left: -20px; }
+      section { padding: 70px 0; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 18px; }
+      .location-grid, .project-grid, .skill-grid, .life-grid { grid-template-columns: 1fr; }
+      .skill-card { min-height: auto;}
+      .skill-card h3 { margin-top: 18px; }
+      .job { grid-template-columns: 1fr; gap: 8px; }
+      .edu-card, .contact-grid { display: block; }
+      .edu-year { margin-top: 16px; }
+      .contact-links { margin-top: 28px; }
+      .footer-inner { flex-direction: column; }
+      .sticker { width: 90px; height: 90px; right: -8px; font-size: .65rem; }
+	 /* ===== CURRENT OBSESSIONS ===== */
+}
+  </style>
+  <style>body { border: 10px solid rgb(195, 112, 167) !important; 
+  #currently {
+  background-color: var(--paper);
+  background-image: radial-gradient(rgba(34,37,31,.16) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  position: relative;
+  overflow: hidden;
+}
+#currently::before, #currently::after {
+  position: absolute; font-size: 6rem; opacity: .12; pointer-events: none;
+  animation: spin 24s linear infinite;
+}
+#currently::before { content: "✳"; top: 40px; left: -20px; color: var(--green); }
+#currently::after  { content: "✳"; bottom: 30px; right: -10px; color: var(--pink); animation-direction: reverse; }
+@keyframes spin { to { rotate: 360deg; } }
 
-  <!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 34px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 1;
+}
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
+.now-card {
+  --bg: var(--lime);
+  --tilt: -2deg;
+  position: relative;
+  padding: 44px 24px 26px;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 7px 7px 0 var(--ink);
+  rotate: var(--tilt);
+  animation: bob 5s ease-in-out infinite;
+  transition: rotate .3s cubic-bezier(.34,1.56,.64,1), scale .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease, opacity .6s ease, transform .6s ease;
+}
+.now-card:nth-child(1) { --bg: #f6e3a1; --tilt: -2deg;  animation-delay: 0s; }
+.now-card:nth-child(2) { --bg: #c6e9dc; --tilt: 1.5deg; animation-delay: -1.2s; }
+.now-card:nth-child(3) { --bg: var(--pink); --tilt: -1deg; animation-delay: -2.4s; }
+.now-card:nth-child(4) { --bg: #d8c9e7; --tilt: 2deg;   animation-delay: -3.6s; }
 
-	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+@keyframes bob {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+.now-card:hover {
+  animation-play-state: paused;
+  rotate: 0deg;
+  scale: 1.05;
+  box-shadow: 12px 14px 0 var(--ink);
+  z-index: 2;
+}
+
+/* tape */
+.now-card::before {
+  content: "";
+  position: absolute; top: -14px; left: 50%;
+  width: 78px; height: 26px;
+  background: rgba(255,253,248,.7);
+  border: 1.5px dashed rgba(34,37,31,.3);
+  translate: -50% 0;
+  rotate: -3deg;
+}
+
+/* emoji badge */
+.now-emoji {
+  position: absolute; top: -26px; right: 14px;
+  width: 58px; height: 58px;
+  display: grid; place-items: center;
+  font-size: 1.9rem;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: rotate .4s ease, scale .4s ease;
+}
+.now-card:hover .now-emoji { animation: wiggle .6s ease; scale: 1.15; }
+@keyframes wiggle {
+  0%, 100% { rotate: 0deg; }
+  25% { rotate: -20deg; }
+  75% { rotate: 20deg; }
+}
+
+.now-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 11px;
+  font: 500 .66rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: var(--ink);
+  color: var(--white);
+  border-radius: 99px;
+}
+.now-card h3 {
+  font: 500 1.6rem/1.1 var(--serif);
+  letter-spacing: -.03em;
+  margin: 0 0 16px;
+}
+
+/* little animated extras */
+.now-extra { font: .72rem var(--mono); color: rgba(34,37,31,.75); }
+
+.progress { height: 10px; border: 1.5px solid var(--ink); border-radius: 99px; background: var(--white); overflow: hidden; margin-bottom: 8px; }
+.progress i { display: block; height: 100%; width: 0; background: var(--green); border-radius: 99px; }
+.reveal.visible .progress i { animation: fill 1.6s .4s ease forwards; }
+@keyframes fill { to { width: 62%; } }
+
+.dots span { display: inline-block; width: 9px; height: 9px; margin-right: 5px; background: var(--ink); border-radius: 50%; animation: pulse 1.2s ease-in-out infinite; }
+.dots span:nth-child(2) { animation-delay: .2s; }
+.dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes pulse { 0%, 100% { scale: .5; opacity: .4; } 50% { scale: 1.2; opacity: 1; } }
+
+.yum { letter-spacing: .3em; }
+.yum span { display: inline-block; animation: hop 1s ease-in-out infinite; }
+.yum span:nth-child(2) { animation-delay: .15s; }
+.yum span:nth-child(3) { animation-delay: .3s; }
+@keyframes hop { 0%, 60%, 100% { translate: 0 0; } 30% { translate: 0 -8px; } }
+
+.rec::before { content: ""; display: inline-block; width: 9px; height: 9px; margin-right: 8px; background: #e0312b; border-radius: 50%; animation: blink 1s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .now-card, .now-emoji, .dots span, .yum span, .rec::before, #currently::before, #currently::after { animation: none !important; }
+  .progress i { width: 62%; animation: none !important; }
+}
+	}</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home">yusra<span>.</span>masood</a>
+      <nav class="navlinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">What I do</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#life">Off-screen</a><a class="contact-link" href="#contact">Say hello ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Wannabe Photographer/ Painter /Artist /Writer /Chef /Traveller</div>
+		 <h1> SOFTWARE ENGINEER</h1>
+          <h2>Code, curiosity<br>& a little <em>color.</em></h2>
+          <p class="intro">Hey, I’m Yusra — a software engineer who likes building useful things, asking better questions, and making room for creativity along the way.</p>
+          <div class="actions">
+            <a class="btn dark" href="#projects">Explore my work <span>↘</span></a>
+            <a class="btn light" href="https://www.linkedin.com/in/yusramasood/" target="_blank" rel="noreferrer">Find me on LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="photo-stack reveal">
+          <span class="tiny-note">A work in progress, just like me</span>
+          <div class="portrait">
+            <img src="images/yusra-portrait.jpeg" alt="Yusra Masood">
+          </div>
+          <div class="sticker">BUILD<br>THINGS<br>WITH HEART ✳</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="A few things I love"><div class="wrap ticker-inner"><span>Thoughtful software</span><b>✳</b><span>Visual stories</span><b>✳</b><span>New places</span><b>✳</b><span>Good questions</span><b>✳</b><span>Thoughtful software</span></div></div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head reveal"><div>
+			<div class="eyebrow">A little introduction</div><h2>Engineer brain.<br>Creative heart.</h2></div><p>.</p></div>
+        <div class="about-grid">
+          <div class="about-visual reveal">
+          <img src="images/coffee.jpeg" alt="Yusra Masood">
+          </div>
+          <div class="about-copy reveal">
+            <p><strong>I’m Yusra Masood, a software engineer</strong> with almost 5 years of experience in full-stack web development and mobile development. I graduated with a BE in Software Engineering from the National University of Sciences and Technology (NUST), Pakistan, in 2020.</p>
+            <p>I enjoy working on ideas that can make a difference, learning from the people around me, and growing both professionally and personally. I like teams where curiosity is welcome and people can do their best work together.</p>
+            <p>Outside of code, you’ll find me taking photos, making short videos, experimenting with animation, painting, writing, cycling, baking, or exploring somewhere new in search of good food.</p>
+            <div class="location-grid">
+              <article class="location-card"><div class="label">📍 Currently based in</div><h3>Dubai, United Arab Emirates</h3>
+				</article>
+              <article class="location-card"><div class="label">Open to opportunities in</div><h3><!-- EDIT: Preferred location --> GCC / EU / Remote </h3><p>Places I’d be excited to call the next chapter.</p><span class="edit"></span></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
-	<!-- Flaticons  -->
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<section id="experience">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">The path so far</div><h2>Work in progress<br>(in the best way).</h2></div><p>Different roles, different challenges — all adding something to the toolkit.</p></div>
+        <div class="timeline">
+          <article class="job reveal"><div class="job-date">JAN 2024 — PRESENT</div><div><h3>Senior Software Engineer</h3><div class="job-company">
+			 <a href="https://quantl.ai/home"> Quantl Trade </a></div><p>
+			Led 0→1 development of a fintech trading platform, building the backend, APIs, and trading engine from scratch, with brokerage, payment (Apple IAP, Stripe), and KYC (Onfido) integrations across web and mobile. Built automated portfolio rebalancing algorithms and managed the platform post-launch, growing AUM from $0 to $300K+.
+		  <br><strong>Toolkit:</strong> React.js, Next.js React native /TypeScript, Node.js/Express, Stripe, Apple IAP,</p></div></article>
+		  <article class="job reveal"><div class="job-date">JAN 2023 — DEC 2023</div><div><h3>Software Engineer</h3><div class="job-company"> <a href="https://www.channeluc.com/">Channel UC</a></div><p> Built an identity and access management platform with OAuth and custom APIs.
+Delivered data-driven features, ensuring secure and scalable access management. <br><strong>Toolkit:</strong> OpenID, OAuth, JavaScript
+.</p></div></article>
+          <article class="job reveal"><div class="job-date">JUN 2021 — DEC 2022</div><div><h3>Technical Content Engineer</h3><div class="job-company"> <a href="https://www.educative.io">Educative.io</a></div><p>Created technical learning content for text-based courses with embedded coding environments. <br><strong>Toolkit:</strong> JavaScript, Docker.</p></div></article>
+          <article class="job reveal"><div class="job-date">NOV 2020 — JUN 2021</div><div><h3>Associate Software Engineer</h3><div class="job-company"><a href="https://gaper.io/"> Mezino Technologies (Gaper.io) </a></div><p>Worked as a full-stack web developer for large-scale client projects. <br><strong>Toolkit:</strong> JavaScript, React, HTML/CSS, Python, Django REST Framework, Material UI.</p></div></article>
+          <article class="job reveal"><div class="job-date">FEB 2019 — MAY 2019</div><div><h3>Frontend Developer · Research Intern</h3><div class="job-company"> <a href="https://seecs.nust.edu.pk/internet-of-things-iot/"> IOT Lab, SEECS — INDOOR AGRI</a></div><p>Developed a web portal to monitor sensor values and display live graphs. <br><strong>Toolkit:</strong> JavaScript, jQuery, HTML/CSS.</p></div></article>
+        </div>
+      </div>
+    </section>
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <section class="skills-section" id="skills">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">My toolkit</div><h2>Technical Skills<br></h2></div><p>Trying to fit-in everything I've worked on</p></div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><span class="skill-num">01 /</span><h3>Full Stack Development</h3><p> <b>JavaScript</b>, Next.js, Node.js / Express, React.js <b> Python</b>, Django REST Framework, REST APIs, Material UI.</p></article>
+          <article class="skill-card reveal"><span class="skill-num">02 /  </span><h3> Mobile Development </h3><p>React Native, TypeScript, Expo, Redux, Apple IAP (in-app purchases and subscriptions)  </p></article>
+          <article class="skill-card reveal"><span class="skill-num">03 /</span><h3>Everything else </h3><p> Stripe, OAuth, Socket.IO, KYC,  Git, System design, UML diagrams, software testing, formal verification, technical writing and documentation.</p></article>
+		  <article class="skill-card reveal"><span class="skill-num">04 /</span><h3>Industries I've worked in</h3><p> FinTech, EdTech, HealthTech</p></article>
+        </div>
+      </div>
+    </section>
 
-	</head>
-	<body>
-	<div id="colorlib-page">
-		<div class="container-wrap">
-		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
-			<div class="text-center">
-				<div class="author-img" style="background-image: url(images/about.jpg);"></div>
-				<h1 id="colorlib-logo"><a href="index.html">Yusra Masood</a></h1>
-				<span class="position"><a href="#">Software Engineer</a></span>
-			</div>
-			<nav id="colorlib-main-menu" role="navigation" class="navbar">
-				<div id="navbar" class="collapse">
-					<ul>
-						<li class="active"><a href="#" data-nav-section="home">Home</a></li>
-						<li><a href="#" data-nav-section="about">About</a></li>
-						<li><a href="#" data-nav-section="services"> Skills</a></li>
-						<li><a href="#" data-nav-section="work">Projects</a></li>
-						<li><a href="#" data-nav-section="experience">Experience</a></li>
-						<li><a href="#" data-nav-section="education">Education</a></li>
-						<li><a href="#" data-nav-section="contact">Contact</a></li>
-					</ul>
-				</div>
-			</nav>
+    <section class="projects" id="projects">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">Selected work · A few problems tackled</div><h2>Ideas, meet execution.</h2></div><p>A mix of experiments, engineering projects, and practical tools. Each one started with a question worth exploring.</p></div>
+        <div class="project-grid">
+          <article class="project-card reveal"><div class="project-art art-one"><span class="project-index">PROJECT 01</span><span class="project-symbol">◉</span></div><div class="project-body"><div class="project-top"><h3>Virtual Try-on with Augmented Reality</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Virtual%20Try-on%20project" aria-label="Ask about Virtual Try-on">↗</a></div><p>An Android AR plugin for trying on products virtually — from makeup and lenses to glasses, hats, and tattoos.</p><div class="tags"><span class="tag">Android Studio</span><span class="tag">Kotlin</span><span class="tag">ARCore</span><span class="tag">AR</span></div></div></article>
+          <article class="project-card reveal"><div class="project-art art-two"><span class="project-index">PROJECT 02</span><span class="project-symbol">✳</span></div><div class="project-body"><div class="project-top"><h3>Automated Indoor Agriculture</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Indoor%20Agriculture%20project" aria-label="Ask about Indoor Agriculture">↗</a></div><p>A model of an automated indoor farming system, formally simulated and verified, paired with a web portal to monitor sensor values.</p><div class="tags"><span class="tag">Formal verification</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">HTML/CSS</span></div></div></article>
+          <article class="project-card reveal"><div class="project-art art-three"><span class="project-index">PROJECT 03</span><span class="project-symbol">⌕</span></div><div class="project-body"><div class="project-top"><h3>Movie Identification Technology</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Movie%20Identification%20project" aria-label="Ask about Movie Identification">↗</a></div><p>An Android app that identifies a movie from a subtitle or even a fragment of one, using hash tables to improve search efficiency.</p><div class="tags"><span class="tag">Android Studio</span><span class="tag">Java</span><span class="tag">Data structures</span></div></div></article>
+          <article class="project-card reveal"><div class="project-art art-four"><span class="project-index">PROJECT 04</span><span class="project-symbol">↗</span></div><div class="project-body"><div class="project-top"><h3>Minerva: Connecting Students</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Minerva%20project" aria-label="Ask about Minerva">↗</a></div><p>A student community platform where learners can ask questions and get help through text or video replies.</p><div class="tags"><span class="tag">Django</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span></div></div></article>
+          <article class="project-card reveal"><div class="project-art art-five"><span class="project-index">PROJECT 05</span><span class="project-symbol">⌁</span></div><div class="project-body"><div class="project-top"><h3>Hand Gesture Recognition</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Hand%20Gesture%20Recognition%20project" aria-label="Ask about Hand Gesture Recognition">↗</a></div><p>A desktop application that recognizes hand gestures and translates selected signs or finger counts into meaningful messages.</p><div class="tags"><span class="tag">C++</span><span class="tag">OpenCV</span><span class="tag">Computer vision</span></div></div></article>
+          <article class="project-card reveal"><div class="project-art art-six"><span class="project-index">PROJECT 06</span><span class="project-symbol">＋</span></div><div class="project-body"><div class="project-top"><h3>Daily Dairy</h3><a class="arrow" href="mailto:yusimasood@gmail.com?subject=Daily%20Dairy%20project" aria-label="Ask about Daily Dairy">↗</a></div><p>A user-friendly front end for simplifying the process of ordering dairy products online.</p><div class="tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div></div></article>
+        </div>
+      </div>
+    </section>
 
-			
+	<section class="education" id="education">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">Learning foundations</div><h2>Where it started.</h2></div></div>
+        <div class="edu-card reveal"><div><h3>Bachelor of Engineering — Software Engineering</h3><p>National University of Sciences and Technology (NUST) · Islamabad, Pakistan<br>Graduated with 86.5% in major</p></div><div class="edu-year">CLASS OF 2020</div></div>
+        <div class="edu-card reveal" style="margin-top:12px"><div><h3>Intermediate — Pre-Engineering</h3><p>Army Burn Hall College · Abbottabad, Pakistan · 82%</p></div><div class="edu-year">CLASS OF 2015</div></div>
+      </div>
+    </section>
 
-		</aside>
+	<section id="currently">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Right now</div>
+          <h2>Current<br>obsessions.</h2>
+        </div>
+        <p>A live look inside my brain. Subject to change without notice.</p>
+      </div>
 
-		<div id="colorlib-main">
-			<section id="colorlib-hero" class="js-fullheight" data-section="home">
-				<div class="flexslider js-fullheight">
-					<ul class="slides">
-				   
-				   	<li style="background-color: lightblue ">
-				   		<div class="overlay"></div>
-				   		<div class="container-fluid">
-				   			<div class="row">
-					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
-					   				<div class="slider-text-inner">
-					   					<div class="desc">
-						   					<h1> Code. Capture. Coffee. </h1> 												 <p><a href="https://www.linkedin.com/in/yusramasood/" class="btn btn-primary btn-learn"> Linkedin 
-						   						<i class="icon-linkedin2"></i></a></p>
-											</div>
-					   				</div>
-					   			</div>
-					   		</div>
-				   		</div>
-				   	</li>
-				  	</ul>
-			  	</div>
-			</section>
+      <div class="now-grid">
+        <article class="now-card reveal">
+          <div class="now-emoji">📚</div>
+          <div class="now-label">Currently Reading</div>
+          <h3>Who Moved My Cheese?</h3>
+        </article>
 
-			<section class="colorlib-about" data-section="about">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-								<div class="col-md-12">
-									<div class="about-desc">
-										<span class="heading-meta">About Me</span>
-										
-										<p><strong>I'm Yusra. </strong> I'm a Software Engineer with almost 5 years of work experience in full stack web development. I graduated with a BE Software Engineering degree from NUST Pakistan in 2020. I love to work on ideas that can make a difference in life. My career goals revolve around perpetual growth. This growth is not only professional, but also personal. I want to be a part of such an organization where I can learn, and also inspire, and be my best self.
-										<p> I also love to do phorography, make short clips, work with aimations, paint, write, ride bicycles, bake and explore new places & food.
-										    Always ready to learn new things and work on new ideas. </p>
-									
-									</div>
-								</div>
-							</div>
-							
-							
-						</div>
-					</div>
-				</div>
-			</section>
+        <article class="now-card reveal">
+          <div class="now-emoji">🔬</div>
+          <div class="now-label">Currently Researching</div>
+          <h3>Neuroplasticity</h3>
+        </article>
 
+        <article class="now-card reveal">
+          <div class="now-emoji">🍫</div>
+          <div class="now-label">Current Favorite Snack</div>
+          <h3>Acai Greek Yoghurt 😋 😋 😋</h3>
+        </article>
 
-			
-			<section class="colorlib-services" data-section="services">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta">What I DO</span>
-						
-						</div>
-					</div>
-					<div class="row row-pt-md">
-						<div class="col-md-4 text-center animate-box">
-							<div class="services color-1">
-								<span class="icon">
-									<i class="icon-settings"></i>
-								</span>
-								<div class="desc">
-									<h3>Development</h3>
-									JavaScript, Python <br>
-                                     <b> Frontend: </b> React JS, Jquery, HTML/CSS  </br>
-                                    <b> Backend: </b> Node JS, Express, Django DRF</br> 
-									<b> Misc: </b> REST APIs, Git, OAuth, Socket.io, Material UI
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 text-center animate-box">
-							<div class="services color-2">
-								<span class="icon">
-									<i class="icon-pen2"></i>
-								</span>
-								<div class="desc">
-								<h3>Designing</h3>
-									<p><b> UI/UX: </b> <br> Adobe XD, Figma, Miro, Visual Paradigm </br>
-										<b> Other: </b> <br> Canva, Adobe Illustrator, Lightroom</br> </p>
-								</div>
-							</div>
-						</div>
+        <article class="now-card reveal">
+          <div class="now-emoji">🎬</div>
+          <div class="now-label">Currently Watching</div>
+          <h3>The Watcher</h3>
+        </article>
+      </div>
+    </div>
+  </section>
 
-						<div class="col-md-4 text-center animate-box">
-							<div class="services color-4">
-								<span class="icon">
-									<i class="icon-camera4"></i>
-								</span>
-								<div class="desc">
-									<h3>Software Engineering</h3>
-									<p> 
-										<b> UML Diagrams </b>  </br>   
-									<b> Software Testing </b>
-									<b> Formalization </b> </br>
-										<b> Technical Writing & Documentation </b> </br>
-								</p>
-								</div>
-							</div>
-						</div>
-						
-						
-					</div>
-				</div>
-			</section>
-			
-			
+    <section id="life">
+      <div class="wrap">
+        <div class="section-head reveal"><div><div class="eyebrow">Outside the tabs</div><h2>More than my job title.</h2></div><p>The hobbies that keep me curious, observant, and happily distracted from my screen.</p></div>
+        <div class="life-grid">
+          <article class="life-card reveal"><span class="emoji">📷</span><h3>Collecting little moments</h3></article>
+          <article class="life-card reveal"><span class="emoji">🎨</span><h3>Making things just for fun</h3></article>
+          <article class="life-card reveal"><span class="emoji">🚲</span><h3>Exploring places & food</h3></article>
+        </div>
+      </div>
+    </section>
 
-			<section class="colorlib-work" data-section="work">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-
-
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta">My Projects</span>
-						
-						</div>
-					</div>
-					<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
-						
-					</div>
-					<div class="row">
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-							<div class="project" style="background-image: url(images/3.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Virtual Try-on using Augmented
-                                                     Reality</a></h3>
-										<span><p>Designed and developed an augmented reality based
-                                                android plugin for virtual try-on of
-                                                different products like lipsticks, eye shades, blush-on, tattoos, lenses and other wearables like glasses, hats. </p></span>
-										<p class="icon">
-											
-											<span><a href="#"><i class="icon-settings"></i> Android Studio</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> Kotlin</a></span>
-											<span><a href="#"><i class="icon-bulb"></i> ARCore</a></span>
-
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url(images/2.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html"> Formal Verification of Automated
-                                                       Indoor Agriculture</a></h3>
-										<span><p>An automated model of an indoor
-                                           agriculture system, that can make
-                                                growing crops completely hassle free.
-                                               The project automata was made,
-                                              simulated and verified. Also worked on developing a web portal for monitoring sensor values.</p> </span>
-										<p class="icon">
-											
-										
-											<span><a href="#"><i class="icon-pen2"></i> HTML/CSS</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> Javascript</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> Jquery</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url(images/1.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Movie Identification Technology</a></h3>
-										<span> <p>An android app that searches a movie by
-                                           a single subtitle or its part. Analyzed and
-                                          used the right data-structures of hashtables
-                                            to get the best possible time
-                                        complexity for searching a movie by its
-                                            subtitle.</p></span>
-										<p class="icon">
-											
-											<span><a href="#"><i class="icon-settings"></i> Android Studio</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> Java</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-							<div class="project" style="background-image: url(images/4.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Minerva: Connecting Students</a></h3>
-										<span><p>An social media website for students that connects students
-                                            with helpers or instructors. Students can easily post their queries that can be answered through two available options i.e text replies and video replies. </p></span>
-										<p class="icon">
-											
-											<span><a href="#"><i class="icon-settings"></i> Django</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> HTML/CSS</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> Javascript</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url(images/5.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Hand Gesture Recognition</a></h3>
-										<span><p> A desktop app that can detect hand gestures and translate specific signs or number of fingers detected into meaningful messages.
-										</p></span>
-										<p class="icon">
-											
-											
-											<span><a href="#"><i class="icon-pen2"></i> C++ </a></span>
-											<span><a href="#"><i class="icon-bulb"></i> OpenCV </a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url(images/6.png);">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Daily Dairy</a></h3>
-										<span> <p> Designed and developed the front-end for the project Daily Dairy, which is a website that automates the process of ordering of dairy products in an extremely user-friendly and quick way. </p> </span>
-										<p class="icon">
-											
-											<span><a href="#"><i class="icon-pen2"></i> HTML/CSS</a></span>
-											<span><a href="#"><i class="icon-pen2"></i> JavaScript</a></span>
-											<span><a href="#"><i class="icon-bulb"></i> Bootstrap</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-				</div>
-			</section>
-
-			
-
-			<section class="colorlib-experience" data-section="experience">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta"> Work Experience</span>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-12">
-				         <div class="timeline-centered">
-
-
-								   <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-									<div class="timeline-entry-inner">
-									   <div class="timeline-icon color-4">
-										  <i class="icon-pen2"></i>
-									   </div>
-									   <div class="timeline-label">
-										   <h2><a href="#"> <b> Software Engineer </b> </a> <span> Jan 2022 - Present </span>
-											   <p>Quantl </p> </h2>
-										  <p> Currently employed as a Software Engineer at Quantl, working on system design and API integration tasks
-											such as payment gateway integration, OAuth and KYC(Know Your Customer) services.
-											<br> <b> Stack: </b> Django DRF, JS, HTML/CSS </p>
-									   </div>
-									</div>
-								 </article>
-
-								 <article class="timeline-entry animate-box" data-animate-effect="fadeInRight">
-									<div class="timeline-entry-inner">
-									   <div class="timeline-icon color-2">
-										  <i class="icon-pen2"></i>
-									   </div>
-									   <div class="timeline-label">
-										   <h2><a href="#"> <b> Technical Content Engineer </b> </a> <span> Jun 2021 - Dec 2021 </span>
-											   <p> Educative </p> </h2>
-										  <p> Worked as a Technical Content Engineer for text-based courses with embedded coding environments that
-help users learn without the fluff.
-											<br> <b> Stack: </b> JS, Docker </p>
-									   </div>
-									</div>
-								 </article>
-
-								 <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-									<div class="timeline-entry-inner">
-	
-									   <div class="timeline-icon color-1">
-										  <i class="icon-pen2"></i>
-									   </div>
-
-					               <div class="timeline-label">
-					                  <h2><a href="#"> <b> Associate Software Engineer </b> </a> 
-										<span> Nov 2020 - Jun 2021 </span> <p> Mezino Technologies (Gaper.io) </p></h2>
-
-					                  <p>Worked as a full stack web developer for large scale Gaper clients. </br>
-                                         <b> Stack: </b> JS, ReactJS, HTML/CSS, Python Django (DRF), Material UI </p>
-					               </div>
-					            </div>
-					         </article>
-
-
-					         <article class="timeline-entry animate-box" data-animate-effect="fadeInLeft">
-					            <div class="timeline-entry-inner">
-					               <div class="timeline-icon color-3">
-					                  <i class="icon-pen2"></i>
-					               </div>
-					               <div class="timeline-label">
-					               	<h2><a href="#"> <b>Frontend Developer</b> </a> <span> Feb 2019 - May 2019 </span>
-					               		<p> IOT LAB, SEECS </p> </h2>
-					                  <p>Worked as a research intern for the project INDOOR AGRI.
-                                         Developed a web portal for monitoring various sensor values of the project that shows live graphs. </br>
-										 <b> Stack:</b> JavaScript, Jquery, HTML/CSS </p>
-					               </div>
-					            </div>
-					         </article>
-
-					         
-					         
-			</section>
-
-
-
-			
-
-
-			<section class="colorlib-education" data-section="education">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta">Education</span>
-							
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
-							<div class="fancy-collapse-panel">
-
-								<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingOne">
-									        <h4 class="panel-title">
-									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Bachelor of Engineering in Software Engineering
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									        <div class="panel-body">
-									           
-										      			<p> <b> National University of Sciences and Technology (NUST)  </br>  Islamabad, Pakistan </b> 
-										      			</br> Class of 2020
-										      			</br> Graduated with 86.5% in major </p>
-										      		
-									        </div>
-									    </div>
-									</div>
-								
-								
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingTwo">
-									        <h4 class="panel-title">
-									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Intermediate - Pre- Engineering
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-									        <div class="panel-body">
-									           
-										      			<p> <b> Army Burn Hall College
-										      			  </br>  Abbottabad, Pakistan </b> 
-										      			</br> Class of 2015
-										      			</br> Passed with 82% </p>
-										      		
-									        </div>
-									    </div>
-									</div>
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingThree">
-									        <h4 class="panel-title">
-									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Matriculation - Science
-									            </a>
-									        </h4>
-									    </div>
-									    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-									        <div class="panel-body">
-									           <p> <b> Telecom Girls Public School and College
-										      			  </br>  Haripur, Pakistan </b> 
-										      			</br> Class of 2013
-										      			</br> Passed with 90% </p>	
-									        </div>
-									    </div>
-									</div>
-
-									
-			</section>
-
-			
-
-			<section class="colorlib-contact" data-section="contact">
-				<div class="colorlib-narrow-content">
-					<div class="row">
-						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-							<span class="heading-meta">Contact Me </span>
-							
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-5">
-							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
-								<div class="colorlib-icon">
-									<i class="icon-globe-outline"></i>
-								</div>
-								<div class="colorlib-text">
-									<p><a href="http://www.gmail.com"> yusimasood@gmail.com </a></p>
-								</div>
-							</div>
-						</div>
-					
-						
-					</div>
-						<p class=colorlib > Credits: <i class="icon-heart" aria-hidden="true"></i> Animations/Icons: <a href="https://colorlib.com" target="_blank">Colorlib</a> </p>
-				</div>
-
-			</section>
-
-		</div><!-- end:colorlib-main -->
-	</div><!-- end:container-wrap -->
-
-	</div><!-- end:colorlib-page -->
-
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
-	<!-- Owl carousel -->
-	<script src="js/owl.carousel.min.js"></script>
-	<!-- Counters -->
-	<script src="js/jquery.countTo.js"></script>
-	
-	
-	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
-
-	</body>
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal"><div class="eyebrow">Good things start with a hello</div><h2>Have an idea?<br>Let’s talk.</h2><p>Always happy to connect about thoughtful products, interesting engineering problems, creative collaborations, or the next adventure.</p></div>
+        <div class="contact-links reveal"><a href="mailto:yusimasood@gmail.com">yusimasood@gmail.com ↗</a><a href="https://www.linkedin.com/in/yusramasood/" target="_blank" rel="noreferrer">LinkedIn profile ↗</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Yusra Masood · Made with curiosity ✳</span><span>Built to grow as I do.</span></div></footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
-
